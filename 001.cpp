@@ -1,3 +1,6 @@
+//ComPhy Using C++ A book written by KNA from NTU of Athens
+//example 1 motion of a particle on the plane 
+
 #include<iostream>
 #include<cmath>
 #include<fstream>

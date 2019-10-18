@@ -176,10 +176,10 @@ int main()
     t=t0;
     while(t<=tf)
     {
-        x=V0x/k*(1.0-exp(-k*t));
-        y=(1.0/k)*(V0y+(g/k))*(1.0-exp(-k*t))-(g/k)*t;
-        Vx=V0x*exp(-k*t);
-        Vy=(V0y+(g/k))*exp(-k*t)-(g/k);
+        x=V0x/k*(1.0-exp(-k*t)); //积分 -mkVx=mdVx/dt
+        y=(1.0/k)*(V0y+(g/k))*(1.0-exp(-k*t))-(g/k)*t;//积分 -mkVy=mg=mdVy/dt 利用积分表
+        Vx=V0x*exp(-k*t); //积分 x(t)=jifen(Vx(x)dt) Vx表达式在上面
+        Vy=(V0y+(g/k))*exp(-k*t)-(g/k);//同理积分
         myfile << t << '\t' << x <<'\t' << y << '\t' << Vx << '\t' << Vy << endl;
         t = t+dt;
     }

@@ -91,3 +91,50 @@ int main()
 
     return 0;
 }
+
+
+
+#include<iostream>
+#include<cmath>
+#include<fstream>
+using namespace std;
+
+//all in c g s
+int main()
+{
+    const double PI = 3.1415926;
+    const double g = 9.81;
+
+    double x0;
+    double y0;
+    double x;
+    double y;//coordinate
+    double Vx;
+    double Vy;//velocity
+    double t;
+    double t0=0.0;//initial time
+    double tf=1.4416;//final time
+    double dt=0.001;//time step
+
+    double theta=PI/4.0;//in rad
+    double V0=10.0;
+    double V0x=V0*cos(theta);
+    double V0y=V0*sin(theta);
+
+    cout << "V0x = " << V0x << "V0y = " << V0y << endl;
+    ofstream myfile("pingpao.dat");
+    myfile.precision(10);
+
+    t=t0;
+    while(t<=tf)
+    {
+        x=V0x*t;
+        y=V0y*t-0.5*g*t*t;
+        Vx=V0x;
+        Vy=V0y-g*t;
+        myfile << t << '\t' << x <<'\t' << y << '\t' << Vx << '\t' << Vy << endl;
+        t = t+dt;
+    }
+
+    return 0;
+}

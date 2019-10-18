@@ -69,7 +69,7 @@ int main()
     double dtheta_dt;
     double omega;//rad velocity
 
-    omega = sqrt(g/l);
+    omega = sqrt(g/l);//角频率 而非角速度
     cout << "omega is " << omega << endl;
     cout << "T is " << 2.0*PI/omega << endl;
     ofstream myfile("SimplePendulum.dat");
@@ -78,7 +78,8 @@ int main()
     t=t0;
     while(t<=tf)
     {
-        theta = theta0*cos(omega*(t-t0));
+        theta = theta0*cos(omega*(t-t0)); //由单摆推导的公式 dx^2/dt^2=-w^2x的结果给出x=Asin(wt+phi)
+        //结合初始条件x0=A=lsin(theta0) 以及sin(theta)~theta/l可推导出theta的表达式 微分后得到角速度的表达式
         dtheta_dt = -omega*theta0*sin(omega*(t-t0));
         x = l*sin(theta);
         y = -l*cos(theta);

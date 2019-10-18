@@ -246,3 +246,55 @@ int main()
 //微分x y z 可得速度表达式
 //利用cos表达式可得 w>=genhao(g/l)
 
+#include<iostream>
+#include<cmath>
+#include<fstream>
+using namespace std;
+
+//all in c g s
+int main()
+{
+    const double PI = 3.1415926;
+    const double g=9.81;
+
+    double l=1.0;
+    double r;
+    double x0;
+    double y0;
+    double x;
+    double y;//coordinate
+    double z;
+    double Vx;
+    double Vy;//velocity
+    double Vz;
+    double t;
+    double t0=0.0;//initial time
+    double tf=10.0;//final time
+    double dt=0.01;//time step
+
+    double omega=6.28;
+    double cos_theta=g/(omega*omega*l);
+    double sin_theta=sqrt(1-cos_theta*cos_theta);
+    z = -l*cos_theta;
+    Vz = 0.0;
+    r = (g*sin_theta)/(omega*omega*cos_theta);
+
+    ofstream myfile("xyzyuanzhuibai.dat");
+    myfile.precision(10);
+
+    t=t0;
+    while(t<=tf)
+    {
+        x = r*cos(omega*t);
+        y = r*sin(omega*t);
+        Vx = -r*sin(omega*t)*omega;
+        Vy = r*cos(omega*t)*omega;
+        myfile << t << '\t' << x <<'\t' << y << '\t'<< z << '\t' << Vx << '\t' << Vy <<'\t'<< Vz << endl;
+        t = t+dt;
+    }
+
+    return 0;
+}
+
+
+

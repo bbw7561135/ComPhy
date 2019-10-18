@@ -192,6 +192,48 @@ int main()
 //令x=Acos(wt+phi) y=Asin(wt+phi) 利用初始条件 x0=A y0=0 Vx0=0 Vy0=w2A 以及求导两次与F比较可得
 //xt yt //然后求导可得vxt和yxt
 
+#include<iostream>
+#include<cmath>
+#include<fstream>
+using namespace std;
 
+//all in c g s
+int main()
+{
+    const double PI = 3.1415926;
+
+    double x0;
+    double y0;
+    double x;
+    double y;//coordinate
+    double Vx;
+    double Vy;//velocity
+    double t;
+    double t0=0.0;//initial time
+    double tf=10.0;//final time
+    double dt=0.01;//time step
+    double A=1;//zhenfu
+
+    double o1=3.0;//omega1
+    double o2=5.0;//omega2
+    double T1=2*PI/o1;
+    double T2=2*PI/o2;
+
+    ofstream myfile("xyjianxiezhendang.dat");
+    myfile.precision(10);
+
+    t=t0;
+    while(t<=tf)
+    {
+        x = A*cos(o1*t);
+        y = A*sin(o2*t);
+        Vx = -o1*A*sin(o1*t);
+        Vy = o2*A*cos(o2*t);
+        myfile << t << '\t' << x <<'\t' << y << '\t' << Vx << '\t' << Vy << endl;
+        t = t+dt;
+    }
+
+    return 0;
+}
 
 

@@ -43,4 +43,51 @@ int main()
 }
 
 //example 2 单摆
+#include<iostream>
+#include<cmath>
+#include<fstream>
+using namespace std;
 
+//all in c g s
+int main()
+{
+    const double PI = 3.1415926;
+    const double g = 9.81;
+
+    double l=1.0;//length of line
+    double x;
+    double y;//coordinate
+    double Vx;
+    double Vy;//velocity
+    double t;
+    double t0=0.0;//initial time
+    double tf=20;//final time
+    double dt=0.01;//time step
+
+    double theta;//in rad
+    double theta0=0.314;//initial theta
+    double dtheta_dt;
+    double omega;//rad velocity
+
+    omega = sqrt(g/l);
+    cout << "omega is " << omega << endl;
+    cout << "T is " << 2.0*PI/omega << endl;
+    ofstream myfile("SimplePendulum.dat");
+    myfile.precision(10);
+
+    t=t0;
+    while(t<=tf)
+    {
+        theta = theta0*cos(omega*(t-t0));
+        dtheta_dt = -omega*theta0*sin(omega*(t-t0));
+        x = l*sin(theta);
+        y = -l*cos(theta);
+        Vx = l*dtheta_dt*cos(theta);
+        Vy = l*dtheta_dt*sin(theta);
+        myfile << t << '\t' << x <<'\t' << y << '\t' << Vx << '\t' << Vy
+        << '\t' << theta << '\t' << dtheta_dt << endl;
+        t = t+dt;
+    }
+
+    return 0;
+}

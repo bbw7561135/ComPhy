@@ -93,6 +93,7 @@ int main()
 }
 
 
+//example 3 平抛
 
 #include<iostream>
 #include<cmath>

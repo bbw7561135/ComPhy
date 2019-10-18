@@ -187,6 +187,10 @@ int main()
     return 0;
 }
 
+//各向异性的简谐振荡
+//Fx=-mw1^2x Fy=mw2^2y 相当于回复力 F=-kx k等于mw1^2 mw2^2
+//令x=Acos(wt+phi) y=Asin(wt+phi) 利用初始条件 x0=A y0=0 Vx0=0 Vy0=w2A 以及求导两次与F比较可得
+//xt yt //然后求导可得vxt和yxt
 
 
 

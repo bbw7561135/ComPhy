@@ -244,3 +244,5 @@ int main()
 //利用Tz和Txy的表达式 相除可得cos（theta）的表达式 进而sin（theta）也有了
 //再利用Tz表达式将T表示出来 带入到Txy中可得r表达式
 //微分x y z 可得速度表达式
+//利用cos表达式可得 w>=genhao(g/l)
+

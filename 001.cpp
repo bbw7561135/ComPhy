@@ -297,6 +297,11 @@ int main()
 }
 
 
+//粒子在磁场中运动
+//初始条件见page95
+//推导注意利用初始条件 特别是在积分加速度得到速度表达式时注意运动的方向 theta设为与Y轴的夹角 尽管最后表达式中没有theta
+//最后令x0=V0y/w是一种选择 为的是让xy平面的圆周运动中心在坐标原点
+
 #include<iostream>
 #include<cmath>
 #include<fstream>

@@ -297,4 +297,57 @@ int main()
 }
 
 
+#include<iostream>
+#include<cmath>
+#include<fstream>
+using namespace std;
 
+//all in c g s
+int main()
+{
+    const double PI = 3.1415926;
+
+
+    double x0;
+    double y0;
+    double z0;
+    double x;
+    double y;//coordinate
+    double z;
+    double Vx;
+    double Vy;//velocity
+    double Vz;
+    double V0=1.0;
+    double V0x;
+    double V0y;
+    double V0z;
+    double t;
+    double t0=0.0;//initial time
+    double tf=10.0;//final time
+    double dt=0.01;//time step
+
+    double omega=6.28;
+    double theta=PI/9.0;//20 degree in rad
+
+    V0y=V0*cos(theta);
+    V0z=V0*sin(theta);
+    x0=-V0y/omega;
+
+    ofstream myfile("qvb.dat");
+    myfile.precision(10);
+
+    t=t0;
+    Vz=V0z;
+    while(t<=tf)
+    {
+        x = x0*cos(omega*t);
+        y = -x0*sin(omega*t);
+        z = V0z*t;
+        Vx = V0y*sin(omega*t);
+        Vy = V0y*cos(omega*t);
+        myfile << t << '\t' << x <<'\t' << y << '\t'<< z << '\t' << Vx << '\t' << Vy <<'\t'<< Vz << endl;
+        t = t+dt;
+    }
+
+    return 0;
+}

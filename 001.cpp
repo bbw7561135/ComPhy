@@ -356,3 +356,47 @@ int main()
 
     return 0;
 }
+
+
+#include<iostream>
+#include<cmath>
+#include<fstream>
+using namespace std;
+
+//all in c g s
+int main()
+{
+    const double PI = 3.1415926;
+
+
+    double L=10.0;
+    double x0=0;
+    double v0=1.0;
+    double t0=0.0;
+    double tf=100.0;
+    double dt=0.01;
+    double t;
+    double x;
+    double v;
+
+    ofstream myfile("box1d.dat");
+    myfile.precision(10);
+
+    t=t0;
+    x=x0;
+    v=v0;
+    while(t<=tf)
+    {
+        myfile << t << '\t' << x <<'\t' << v << endl;
+        x = x + v*dt;
+        t = t+dt;
+        if(x<0.0 || x > L)
+        {
+            v = -v;
+        }
+    }
+    myfile.close();
+    return 0;
+}
+
+

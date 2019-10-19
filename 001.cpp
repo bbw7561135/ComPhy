@@ -357,6 +357,7 @@ int main()
     return 0;
 }
 
+//1d 自由盒 在0-L之间 速度为v 自由移动 在0和L处势能无限大 速度反弹为-v
 
 #include<iostream>
 #include<cmath>
